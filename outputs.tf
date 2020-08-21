@@ -10,5 +10,5 @@ output "name" {
 
 output "cloudwatch_logs_name" {
   description = "The name of the log group."
-  value       = aws_cloudwatch_log_group.this.name
+  value       = aws_cloudwatch_log_group.transmitter_lambda.name
 }
