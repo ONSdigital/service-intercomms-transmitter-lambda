@@ -27,7 +27,7 @@ resource "aws_iam_role_policy_attachment" "lambda-execution-fullAccess" {
 
 data "archive_file" "lambda_zip" {
     type          = "zip"
-    source_file   = "${path.module}/handler.py"
+    source_file   = ".terraform/modules/transmitter-lambda/handler.py"
     output_path   = "lambda_function.zip"
 }
 
