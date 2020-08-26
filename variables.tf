@@ -6,3 +6,7 @@ variable "vpc_config" {
     subnet_ids         = list(string)
   })
 }
+
+variable "region" {
+  default = "eu-west-2"
+}
