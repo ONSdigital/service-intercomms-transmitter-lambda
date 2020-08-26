@@ -25,6 +25,11 @@ resource "aws_iam_role_policy_attachment" "lambda-execution-fullAccess" {
   role       = aws_iam_role.lambda.name
 }
 
+resource "aws_iam_role_policy_attachment" "lambda-ec2-fullAccess" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonVPCCrossAccountNetworkInterfaceOperations"
+  role       = aws_iam_role.lambda.name
+}
+
 data "archive_file" "lambda_zip" {
     type          = "zip"
     source_file   = "${path.module}/handler.py"
