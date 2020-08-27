@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     # Structure of EventBridge Event
     eventbridge_event = {
         'Time': datetime.utcnow(),
-        'Source': 'test_lambda',
+        'Source': 'transmitter_lambda',
         'Detail': json.dumps(my_application_event_example),
         'DetailType': 'service_status'
     }
