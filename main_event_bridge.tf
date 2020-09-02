@@ -5,7 +5,12 @@ resource "aws_cloudwatch_event_rule" "json-payload-event" {
 				{
 				"source": [
 					"transmitter_lambda"
-				]
+				],
+				"detail": {
+					"destination": [
+					"A"
+					]
+				}
 				}
 		PATTERN
 
