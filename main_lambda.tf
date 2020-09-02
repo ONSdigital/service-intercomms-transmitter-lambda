@@ -30,6 +30,11 @@ resource "aws_iam_role_policy_attachment" "lambda-ec2-fullAccess" {
   role       = aws_iam_role.lambda.name
 }
 
+ resource "aws_iam_role_policy_attachment" "SQSQueue-ExecutionRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
+  role       = aws_iam_role.lambda.name
+}
+
  //Lambda - Transmitter
 
 data "archive_file" "lambda_zip" {
