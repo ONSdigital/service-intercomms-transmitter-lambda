@@ -62,7 +62,7 @@ resource "aws_lambda_function" "transmitter_lambda" {
 
  data "archive_file" "lambda_receiver" {
   type        = "zip"
-  source_file = "lambda_receiver.py"
+  source_file = "${path.module}/lambda_receiver.py"
   output_path = "lambda_receiver.zip"
 }
 
