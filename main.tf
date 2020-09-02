@@ -8,7 +8,7 @@ resource aws_cloudwatch_log_group transmitter_lambda {
 }
 
 resource "aws_iam_role" "lambda" {
-  name = "lambda_role"
+  name = "intercomms_lambda_role"
   assume_role_policy = file("${path.module}/json_policies/lambda_policy.json")
 
 //NEED TO DO TAGS
