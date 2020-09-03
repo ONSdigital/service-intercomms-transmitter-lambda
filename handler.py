@@ -7,17 +7,14 @@ def lambda_handler(event, context):
     # EventBridge client
     eventbridge_client = boto3.client('events')
 
-    # Example event from your application
-    my_application_event_example = {
-        'service': 'myapp service',
-        'status': 'restored'
-    }
+    # Get destination
+    destination = event['destination']
 
     # Structure of EventBridge Event
     eventbridge_event = {
         'Time': datetime.utcnow(),
         'Source': 'transmitter_lambda',
-        'Detail': json.dumps(my_application_event_example),
+        'Detail': json.dumps(event),
         'DetailType': 'service_status'
     }
 

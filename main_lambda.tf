@@ -71,8 +71,30 @@ resource "aws_lambda_function" "transmitter_lambda" {
   output_path = "lambda_receiver.zip"
 }
 
-resource "aws_lambda_function" "lambda_receiver" {
-  function_name = "lambda_receiver"
+resource "aws_lambda_function" "lambda_receiver_a" {
+  function_name = "lambda_receiver_a"
+  handler = "lambda_receiver.handler"
+  role = aws_iam_role.lambda.arn
+  runtime = "python3.8"
+
+  filename = "lambda_receiver.zip"
+  source_code_hash = "data.archive_file.lambda_receiver.output_base64sha256"
+
+  memory_size = 128
+
+   dynamic "vpc_config" {
+    for_each = var.vpc_config == null ? [] : [var.vpc_config]
+    content {
+      security_group_ids = vpc_config.value.security_group_ids
+      subnet_ids         = vpc_config.value.subnet_ids
+    }
+  }
+
+// NEED TAGS
+}
+
+resource "aws_lambda_function" "lambda_receiver_b" {
+  function_name = "lambda_receiver_b"
   handler = "lambda_receiver.handler"
   role = aws_iam_role.lambda.arn
   runtime = "python3.8"
