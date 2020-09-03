@@ -3,12 +3,11 @@ import boto3
 from datetime import datetime
 
 def lambda_handler(event, context):
-
+    # Log event to CloudWatch
+    print(event)
+    
     # EventBridge client
     eventbridge_client = boto3.client('events')
-
-    # Get destination
-    destination = event['destination']
 
     # Structure of EventBridge Event
     eventbridge_event = {
